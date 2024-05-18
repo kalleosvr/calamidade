@@ -53,6 +53,8 @@ class CheckAffiliatedPage extends StatelessWidget {
                 ),
                 Center(
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    textInputAction: TextInputAction.done,
                     style: theme.textTheme.displaySmall!
                         .copyWith(color: colors.appBackground),
                     validator: (String? value) {

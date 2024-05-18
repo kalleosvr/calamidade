@@ -37,6 +37,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
               ),
             ),
             keyboardType: TextInputType.visiblePassword,
+            textInputAction: TextInputAction.done,
             validator: widget.validator,
           );
         });

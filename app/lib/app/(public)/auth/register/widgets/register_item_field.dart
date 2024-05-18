@@ -56,6 +56,7 @@ class _RegisterItemFieldState extends State<RegisterItemField> {
                       : null,
                 ),
                 keyboardType: widget.isPassword ? TextInputType.visiblePassword : TextInputType.text,
+                textInputAction: widget.isPassword ? TextInputAction.done : TextInputAction.next,
                 validator: widget.validator,
                 style: textTheme.displaySmall?.copyWith(height: 0.9, color: colors.textColor),
               );

@@ -94,6 +94,9 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 8),
                       TextFormField(
                         controller: controller.emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        textCapitalization: TextCapitalization.none,
+                        textInputAction: TextInputAction.next,
                         decoration: const InputDecoration(
                           hintText: 'Insira seu email',
                         ),

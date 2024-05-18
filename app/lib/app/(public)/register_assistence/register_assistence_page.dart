@@ -103,6 +103,8 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
                           const SizedBox(height: 8),
                           TextFormField(
                             controller: _cpfOrCnpjController,
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.next,
                             decoration: const InputDecoration(
                               hintText: 'Informe seu CPF/CNPJ',
                             ),
@@ -118,6 +120,9 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
                           const SizedBox(height: 8),
                           TextFormField(
                             controller: _nameController,
+                            keyboardType: TextInputType.name,
+                            textCapitalization: TextCapitalization.words,
+                            textInputAction: TextInputAction.next,
                             decoration: const InputDecoration(
                               hintText: 'Insira seu nome completo',
                             ),
@@ -133,6 +138,9 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
                           const SizedBox(height: 8),
                           TextFormField(
                             controller: _emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            textCapitalization: TextCapitalization.none,
+                            textInputAction: TextInputAction.next,
                             decoration: const InputDecoration(
                               hintText: 'Insira seu e-mail',
                             ),
@@ -157,6 +165,8 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
                           const SizedBox(height: 8),
                           TextFormField(
                             controller: _phoneController,
+                            keyboardType: TextInputType.phone,
+                            textInputAction: TextInputAction.done,
                             decoration: const InputDecoration(
                               hintText: 'Insira seu número de telefone',
                             ),
@@ -176,6 +186,9 @@ class _RegisterAssistencePageState extends State<RegisterAssistencePage> {
                               Expanded(
                                 child: TextFormField(
                                   controller: _locationController,
+                                  keyboardType: TextInputType.text,
+                                  textCapitalization: TextCapitalization.words,
+                                  textInputAction: TextInputAction.done,
                                   decoration: const InputDecoration(
                                     hintText: 'Insira sua localização',
                                   ),

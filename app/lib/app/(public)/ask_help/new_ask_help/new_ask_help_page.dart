@@ -119,6 +119,9 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                         text: 'Titulo da solicitação*'),
                     TextFormField(
                       controller: _titleController,
+                      keyboardType: TextInputType.text,
+                      textCapitalization: TextCapitalization.sentences,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         hintText: 'Insira o titulo para solicitação',
                       ),
@@ -133,6 +136,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     TextFormField(
                       controller: _cpfController,
                       keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         hintText: 'Insira o CPF do Assistido',
                       ),
@@ -146,6 +150,8 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     const TextInformationExtends(text: 'Chave pix'),
                     TextFormField(
                       controller: _pixKeyController,
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         hintText: 'Insira a chave pix do Assistido',
                       ),
@@ -153,6 +159,9 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     const TextInformationExtends(text: 'Banco'),
                     TextFormField(
                       controller: _bankController,
+                      keyboardType: TextInputType.text,
+                      textCapitalization: TextCapitalization.words,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         hintText: 'Insira o banco do Assistido',
                       ),
@@ -161,6 +170,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     TextFormField(
                       controller: _agencyController,
                       keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         hintText: 'Insira a agência bancária do Assistido',
                       ),
@@ -169,6 +179,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     TextFormField(
                       controller: _accountController,
                       keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.next,
                       decoration: const InputDecoration(
                         hintText: 'Insira a conta bancária do Assistido',
                       ),
@@ -177,6 +188,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     TextFormField(
                       controller: _valueController,
                       keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.done,
                       decoration: const InputDecoration(
                         hintText: 'R\$ 14.500,00',
                       ),
@@ -218,6 +230,9 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                     const TextInformationExtends(text: 'Breve descrição'),
                     TextFormField(
                       controller: _descriptionController,
+                      keyboardType: TextInputType.text,
+                      textCapitalization: TextCapitalization.sentences,
+                      textInputAction: TextInputAction.done,
                       maxLines: 8,
                       decoration: const InputDecoration(
                         hintText:

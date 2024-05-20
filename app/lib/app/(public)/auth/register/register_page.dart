@@ -37,7 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void listener() {
     return switch (controller.value) {
       SuccessState() => Routefly.navigate(
-          routePaths.affiliatedFirstAction.presentation.affiliatedFirstAction),
+          routePaths.affiliatedFirstAction),
       ErrorState(:final exception) =>
         Alerts.showFailure(context, exception.message),
       _ => null,

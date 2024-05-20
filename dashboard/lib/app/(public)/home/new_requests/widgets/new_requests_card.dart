@@ -8,7 +8,7 @@ class NewRequestsCard extends StatefulWidget {
   final String city;
   final String phone;
   final String date;
-  final RequestStatus status;
+  final RequestStatusEnum status;
   final String requestedIncome;
   final VoidCallback? onTap;
   final bool isSelected;

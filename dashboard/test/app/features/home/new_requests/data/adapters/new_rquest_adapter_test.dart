@@ -29,7 +29,7 @@ void main() {
       expect(result, isA<NewRequestEntity>());
       expect(result.id, equals(1));
       expect(result.name, equals('John Doe'));
-      expect(result.status, equals(RequestStatus.fromId(1)));
+      expect(result.status, equals(RequestStatusEnum.fromId(1)));
       expect(result.city, equals('New York'));
       expect(result.phone, equals('1234567890'));
       expect(result.bank, equals('ABC Bank'));

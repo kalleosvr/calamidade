@@ -123,7 +123,7 @@ class _NewRequestsPageState extends State<NewRequestsPage> {
                           phone: state.lastItem?.phone ?? '',
                           date: state.lastItem?.date ?? '',
                           status:
-                              state.lastItem?.status ?? RequestStatus.analisys,
+                              state.lastItem?.status ?? RequestStatusEnum.analisys,
                           requestedIncome:
                               state.lastItem?.requestedIncome ?? '',
                           isSelected: state.selectedId == state.lastItem?.id,

@@ -63,7 +63,7 @@ class _AffiliatedFirstActionPageState extends State<AffiliatedFirstActionPage> {
                       labelSecondary: 'Estou buscando recursos',
                       onPressed: () {
                         Routefly.navigate(routePaths.home);
-                        Routefly.push(routePaths.askHelp.path);
+                        Routefly.push(routePaths.askHelp.newAskHelp);
                       },
                     ),
                     const SizedBox(

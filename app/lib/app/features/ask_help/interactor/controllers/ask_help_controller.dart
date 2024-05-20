@@ -19,7 +19,7 @@ class AskHelpController extends BaseController {
 
     result.fold(
       (error) => update(ErrorState<BaseException>(exception: error)),
-      (success) => update(SuccessState(data: success)),
+      (_) => update(SuccessState<SolicitationEntity>(data: solicitation)),
     );
   }
 }

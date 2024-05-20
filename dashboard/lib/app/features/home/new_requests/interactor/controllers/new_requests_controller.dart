@@ -28,7 +28,7 @@ class NewRequestsController extends BaseController<BaseState> {
         phone: '+55 (51) 9 1234-5648',
         date: '15 de maio às 10h',
         status:
-            index.isEven ? RequestStatus.rejected : RequestStatus.notDefined,
+            index.isEven ? RequestStatusEnum.rejected : RequestStatusEnum.notDefined,
         requestedIncome: '3.500,00',
         bank: 'CooperBank',
         agency: 'Estância Velha',

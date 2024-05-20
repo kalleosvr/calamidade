@@ -6,7 +6,7 @@ class RequestDetailsEntity extends Entity {
   final UserRequestDetailsEntity user;
   final DateTime createdAt;
   final double amount;
-  final RequestStatus status;
+  final RequestStatusEnum status;
   final String description;
 
   RequestDetailsEntity({

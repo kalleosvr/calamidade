@@ -8,4 +8,8 @@ class CurrencyAdapter {
 
     return valueFormatted;
   }
+
+  static double brlToDouble(String value) {
+    return double.parse(value.replaceAll('R\$', '').replaceAll('.', '').replaceAll(',', '.'));
+  }
 }

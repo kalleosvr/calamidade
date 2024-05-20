@@ -1,9 +1,16 @@
+import 'package:coopartilhar/app/(public)/auth/check_affiliated/check_affiliated_page.dart';
+import 'package:coopartilhar/app/features/ask_help/entities/solicitation_entity.dart';
+import 'package:coopartilhar/app/features/ask_help/interactor/controllers/ask_help_controller.dart';
+import 'package:coopartilhar/injector.dart';
+import 'package:coopartilhar/routes.dart';
 import 'package:core_module/core_module.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class NewAskHelpPage extends StatefulWidget {
   const NewAskHelpPage({super.key, this.title = 'Solicitação'});
+
   final String title;
 
   @override
@@ -13,6 +20,8 @@ class NewAskHelpPage extends StatefulWidget {
 class _NewAskHelpPageState extends State<NewAskHelpPage> {
   late final GlobalKey<FormState> _formKey;
   String preApprovedValue = '7.500,00';
+
+  final _controller = injector.get<AskHelpController>();
 
   bool asImage = false;
   String urlImage = '';
@@ -38,10 +47,12 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
     _accountController = TextEditingController();
     _valueController = TextEditingController();
     _descriptionController = TextEditingController();
+    _controller.addListener(listener);
   }
 
   @override
   void dispose() {
+    _controller.removeListener(listener);
     _titleController.dispose();
     _cpfController.dispose();
     _pixKeyController.dispose();
@@ -53,8 +64,36 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
     super.dispose();
   }
 
-  void _registerRequest() {
-    if (_formKey.currentState!.validate()) {}
+  void listener() {
+    if (_controller.value is SuccessState) {
+      Routefly.replace(routePaths.requestDetails, arguments: {
+        'id': (_controller.value as SuccessState<SolicitationEntity>).data.id
+      });
+    } else if (_controller.value is ErrorState<BaseException>) {
+      Alerts.showFailure(
+        context,
+        (_controller.value as ErrorState<BaseException>).exception.message,
+      );
+    }
+  }
+
+  void _registerRequest() async {
+    if (_formKey.currentState!.validate()) {
+      // TODO - ajustar como serão implementados o id e as imagens.
+      final newSolicitation = SolicitationEntity(
+        id: 0,
+        title: _titleController.text,
+        cpf: _cpfController.text,
+        pix: _pixKeyController.text,
+        bank: _bankController.text,
+        agency: _agencyController.text,
+        account: _accountController.text,
+        value: CurrencyAdapter.brlToDouble(_valueController.text),
+        file: [],
+        description: _descriptionController.text,
+      );
+      await _controller.saveSolicitation(solicitation: newSolicitation);
+    }
   }
 
   @override
@@ -142,6 +181,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                         }
                         return null;
                       },
+                      inputFormatters: [CpfCnpjFormatter()],
                     ),
                     const TextInformationExtends(text: 'Chave pix'),
                     TextFormField(
@@ -180,6 +220,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
                       decoration: const InputDecoration(
                         hintText: 'R\$ 14.500,00',
                       ),
+                      inputFormatters: [CurrencyFormatter()],
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
                           return 'Valor não pode esta vazio';
@@ -239,6 +280,7 @@ class _NewAskHelpPageState extends State<NewAskHelpPage> {
 
 class TextInformationExtends extends StatelessWidget {
   const TextInformationExtends({super.key, required this.text});
+
   final String text;
 
   @override
@@ -249,5 +291,36 @@ class TextInformationExtends extends StatelessWidget {
         Text(text),
       ],
     );
+  }
+}
+
+class CurrencyFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    final text = newValue.text;
+    final removedCharacters = text.replaceAll(RegExp('[^0-9]'), '');
+
+    final maskedText = _applyMask(removedCharacters);
+    return TextEditingValue(
+      text: maskedText,
+      selection: TextSelection.collapsed(offset: maskedText.length),
+    );
+  }
+
+  String _applyMask(String text) {
+    if (text.length <= 2) {
+      return 'R\$ ,$text';
+    } else if (text.length <= 3) {
+      return 'R\$ ${text.substring(0, 1)},${text.substring(1, text.length)}';
+    } else if (text.length <= 4) {
+      return 'R\$ ${text.substring(0, 2)},${text.substring(2, text.length)}';
+    } else if (text.length <= 5) {
+      return 'R\$ ${text.substring(0, 3)},${text.substring(3, text.length)}';
+    } else if (text.length <= 6) {
+      return 'R\$ ${text.substring(0, 1)}.${text.substring(1, 4)},${text.substring(4, text.length)}';
+    } else {
+      return 'R\$ ${text.substring(0, 2)}.${text.substring(2, 5)},${text.substring(5, 7)}';
+    }
   }
 }

@@ -20,7 +20,7 @@ export 'src/cache/cache.dart';
 export 'src/client/client.dart';
 export 'src/controllers/controllers.dart';
 export 'src/entities/entity.dart';
-export 'src/entities/request_status.dart';
+export 'src/entities/request_status_enum.dart';
 export 'src/errors/errors.dart';
 export 'src/helpers/validators_helper.dart';
 export 'src/states/base_state.dart';

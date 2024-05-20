@@ -9,7 +9,7 @@ class RequestDetailsAdapter {
       user: UserRequestDetailsAdapter.fromJson(map['user']),
       title: map['title'],
       amount: map['amount'],
-      status: RequestStatus.fromId(map['status']),
+      status: RequestStatusEnum.fromId(map['status']),
       createdAt: DateTime.parse(map['createdAt']),
       description: map['description'],
     );

@@ -9,7 +9,7 @@ class NewRequestAdapter {
       date: json['date'],
       requestedIncome: json['requestedIncome'],
       name: json['name'],
-      status: RequestStatus.fromId(json['status']),
+      status: RequestStatusEnum.fromId(json['status']),
       city: json['city'],
       phone: json['phone'],
       bank: json['bank'],

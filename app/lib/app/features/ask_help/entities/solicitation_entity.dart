@@ -7,7 +7,7 @@ class SolicitationEntity extends Entity {
   final String? bank;
   final String? agency;
   final String? account;
-  final int value;
+  final double value;
   final List<int> file;
   final String? description;
 

@@ -14,7 +14,7 @@ class RegisterController<RegisterState> extends BaseController {
 
   Future<void> register(UserEntity user) async {
     if (formKey.currentState!.validate()) {
-      final registerEntity = RegisterEntity(
+      final registerEntity = UserEntity(
         -1,
         email: user.email,
         name: user.name,

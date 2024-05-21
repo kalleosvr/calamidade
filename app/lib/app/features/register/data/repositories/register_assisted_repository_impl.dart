@@ -10,7 +10,7 @@ class RegisterRepositoryImpl extends IRegisterRepository {
 
   @override
   Future<Output<Unit>> register({
-    required RegisterEntity register,
+    required UserEntity register,
   }) async {
     try {
       final payload = RegisterAdapter.toJson(register);

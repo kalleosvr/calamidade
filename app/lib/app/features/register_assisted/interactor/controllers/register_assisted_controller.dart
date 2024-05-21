@@ -1,4 +1,3 @@
-import 'package:coopartilhar/app/features/register_assisted/entities/assisted_entity.dart';
 import 'package:coopartilhar/app/features/register_assisted/repositories/i_register_assisted_repository.dart';
 import 'package:core_module/core_module.dart';
 
@@ -8,14 +7,14 @@ class RegisterAssistedController extends BaseController {
   RegisterAssistedController({required this.repository})
       : super(InitialState());
 
-  Future<void> register({required AssistedEntity assisted}) async {
+  Future<void> register({required UserEntity assisted}) async {
     update(LoadingState());
 
     final response = await repository.register(assisted: assisted);
 
     response.fold(
       (left) => update(ErrorState(exception: left)),
-      (right) => update(SuccessState<AssistedEntity>(data: right)),
+      (right) => update(SuccessState<UserEntity>(data: right)),
     );
   }
 

@@ -1,9 +1,9 @@
 enum RequestStatusEnum {
+  notDefined('Não definido', 0xFF010101, 0xFFFFFFFF),
   analisys('Em analise', 0xFFfcb900, 0xFFa17703),
   accepted('Aceito', 0xFF129166, 0xFF0a4531),
   rejected('Rejeitado', 0xFFEB5757, 0xFF7d2e2e),
-  concluded('Concluído', 0xFF129166, 0xFF0a4531),
-  notDefined('Não definido', 0xFF010101, 0xFFFFFFFF);
+  concluded('Concluído', 0xFF129166, 0xFF0a4531);
 
   final String label;
   final int color;

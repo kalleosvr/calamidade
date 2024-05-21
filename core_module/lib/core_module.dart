@@ -16,10 +16,18 @@ export 'package:uuid/uuid.dart';
 
 export 'src/adapters/currency_adapter.dart';
 export 'src/adapters/date_adapter.dart';
+export 'src/adapters/request_adapter.dart';
+export 'src/adapters/user_adapter.dart';
+export 'src/adapters/address_adapter.dart';
+export 'src/adapters/bank_account_adapter.dart';
 export 'src/cache/cache.dart';
 export 'src/client/client.dart';
 export 'src/controllers/controllers.dart';
 export 'src/entities/entity.dart';
+export 'src/entities/help_type_enum.dart';
+export 'src/entities/request_entity.dart';
+export 'src/entities/user_entity.dart';
+export 'src/entities/address_entity.dart';
 export 'src/entities/request_status_enum.dart';
 export 'src/errors/errors.dart';
 export 'src/helpers/validators_helper.dart';
